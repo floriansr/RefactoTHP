@@ -1,3 +1,4 @@
+// Kata written by Matthieu BRAULT for the next-react formation from TheHackingProject
 import React, { Component } from 'react';
 import { Avatar, Button, Card, Col, Icon, Row, Modal, List, Tag, Input, message } from 'antd/es';
 import MentionsTagsComponent from './MentionsTagsComponent';
