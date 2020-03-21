@@ -2,6 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+//Kata for THP next-react formation
+//All components will be rewrite in JS (not TS) in this file
+
 function App() {
   return (
     <div className="App">
