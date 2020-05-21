@@ -2,9 +2,11 @@
 
 import React, { useState } from "react";
 
-import PreviewPublicationModals from "components/PreviewPublicationModals";
-import PreviewUploadPicture from "components/PreviewUploadPicture";
-import PreviewUpdateProfil from "components/PreviewUpdateProfil";
+import DataContext from "context/DataContext";
+
+// import PreviewPublicationModals from "components/PreviewPublicationModals";
+// import PreviewUploadPicture from "components/PreviewUploadPicture";
+// import PreviewUpdateProfil from "components/PreviewUpdateProfil";
 import ProfilDetails from "components/ProfilDetails";
 import Publications from "components/Publications";
 
@@ -14,7 +16,6 @@ import Publications from "components/Publications";
 
 // import { uploadPicture } from "tools/uploadPicture";
 // import { uploadModal } from "tools/uploadModal";
-// import { openPreview } from "tools/OpenPreview";
 // import { formatDate } from "tools/FormatDate";
 
 // import { updateMentions } from "tools/updateMentions";
@@ -75,15 +76,18 @@ const App = () => {
   return (
     <>
       <div style={{ margin: 50 }}>
-        <PreviewPublicationModals />
-        <PreviewUploadPicture />
-        <PreviewUpdateProfil />
-        <ProfilDetails />
-        <Publications />
+        <DataContext.Provider value={{ data, setData }}>
+          <ProfilDetails />
+          <Publications />
+        </DataContext.Provider>
       </div>
     </>
   );
 };
+
+// <PreviewPublicationModals />
+// <PreviewUploadPicture />
+// <PreviewUpdateProfil />
 
 export default App;
 

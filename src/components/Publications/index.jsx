@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import DataContext from "context/DataContext";
 
 import { Card, Col, Icon, Row } from "antd/es";
 
 const Publications = () => {
+	const { data, setData } = useContext(DataContext);
+
+	const openPreview = (postNumber) => {
+		setData({
+			previewItem: postNumber,
+			previewPublicationModal: true,
+		});
+	};
+
 	return (
 		<>
 			<Row type="flex" justify="center">
@@ -18,10 +29,10 @@ const Publications = () => {
 							onClick={() => openPreview(0)}
 						>
 							<img
-								src={state.profileData.posts[0].imageUrl}
+								src={data.profileData.posts[0].imageUrl}
 								width={200}
 								height={200}
-								alt={state.profileData.posts[0].imageUrl}
+								alt={data.profileData.posts[0].imageUrl}
 							/>
 						</Card>
 						<Card
@@ -30,10 +41,10 @@ const Publications = () => {
 							onClick={() => openPreview(1)}
 						>
 							<img
-								src={state.profileData.posts[1].imageUrl}
+								src={data.profileData.posts[1].imageUrl}
 								width={200}
 								height={200}
-								alt={state.profileData.posts[1].imageUrl}
+								alt={data.profileData.posts[1].imageUrl}
 							/>
 						</Card>
 						<Card
@@ -42,10 +53,10 @@ const Publications = () => {
 							onClick={() => openPreview(2)}
 						>
 							<img
-								src={state.profileData.posts[2].imageUrl}
+								src={data.profileData.posts[2].imageUrl}
 								width={200}
 								height={200}
-								alt={state.profileData.posts[2].imageUrl}
+								alt={data.profileData.posts[2].imageUrl}
 							/>
 						</Card>
 					</Col>

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import DataContext from "context/DataContext";
 
 import { Avatar, Button, Card, Col, Icon, Row } from "antd/es";
 
 const ProfilDetails = () => {
+	const { data, setData } = useContext(DataContext);
+
 	return (
 		<>
 			<Row type="flex" align="middle" justify="center">
@@ -17,10 +21,10 @@ const ProfilDetails = () => {
 											icon="user"
 											className="profil-pic"
 											src={
-												state.profileData.profilePicture
+												data.profileData.profilePicture
 											}
 										/>
-										<h3>{`${state.profileData.firstname} ${state.profileData.lastname}`}</h3>
+										<h3>{`${data.profileData.firstname} ${data.profileData.lastname}`}</h3>
 									</Col>
 									<Col span={10}>
 										<p>
@@ -28,21 +32,21 @@ const ProfilDetails = () => {
 												type="user"
 												className="p-icon"
 											/>
-											{state.profileData.username}
+											{data.profileData.username}
 										</p>
 										<p>
 											<Icon
 												type="mail"
 												className="p-icon"
 											/>
-											{state.profileData.email}
+											{data.profileData.email}
 										</p>
 										<p>
 											<Icon
 												type="phone"
 												className="p-icon"
 											/>
-											{state.profileData.phoneNumber}
+											{data.profileData.phoneNumber}
 										</p>
 									</Col>
 								</Row>
@@ -57,7 +61,7 @@ const ProfilDetails = () => {
 									type="ghost"
 									icon="setting"
 									onClick={() =>
-										setState({ editProfilModal: true })
+										setData({ editProfilModal: true })
 									}
 								>
 									Edit account
@@ -68,7 +72,7 @@ const ProfilDetails = () => {
 									type="ghost"
 									icon="upload"
 									onClick={() =>
-										setState({ uploadModal: true })
+										setData({ uploadModal: true })
 									}
 								>
 									Upload a picture
