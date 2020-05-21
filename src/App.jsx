@@ -4,22 +4,11 @@ import React, { useState } from "react";
 
 import DataContext from "context/DataContext";
 
-// import PreviewPublicationModals from "components/PreviewPublicationModals";
-// import PreviewUploadPicture from "components/PreviewUploadPicture";
-// import PreviewUpdateProfil from "components/PreviewUpdateProfil";
 import ProfilDetails from "components/ProfilDetails";
 import Publications from "components/Publications";
-
-// import { updateProfile } from "tools/updateProfile";
-// import { updatePic } from "tools/updatePic";
-// import { deletePic } from "tools/deletePic";
-
-// import { uploadPicture } from "tools/uploadPicture";
-// import { uploadModal } from "tools/uploadModal";
-// import { formatDate } from "tools/FormatDate";
-
-// import { updateMentions } from "tools/updateMentions";
-// import { updateHashtags } from "tools/updateHashtags";
+import PreviewPublicationModals from "components/PreviewPublicationModals";
+import PreviewUploadPicture from "components/PreviewUploadPicture";
+import PreviewUpdateProfil from "components/PreviewUpdateProfil";
 
 const App = () => {
   const [data, setData] = useState({
@@ -79,27 +68,13 @@ const App = () => {
         <DataContext.Provider value={{ data, setData }}>
           <ProfilDetails />
           <Publications />
+          <PreviewPublicationModals />
+          <PreviewUploadPicture />
+          <PreviewUpdateProfil />
         </DataContext.Provider>
       </div>
     </>
   );
 };
 
-// <PreviewPublicationModals />
-// <PreviewUploadPicture />
-// <PreviewUpdateProfil />
-
 export default App;
-
-// this.formatDate = this.formatDate.bind(this);
-// this.deletePic = this.deletePic.bind(this);
-// this.updatePic = this.updatePic.bind(this);
-// this.uploadPicture = this.uploadPicture.bind(this);
-// this.updateHashtags = this.updateHashtags.bind(this);
-// this.updateMentions = this.updateMentions.bind(this);
-// this.updateProfile = this.updateProfile.bind(this);
-
-// <p>
-//   <Icon type="calendar" className="p-icon" />
-//   {this.formatDate(this.state.profileData.createdAt)}
-// </p>

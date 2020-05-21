@@ -1,26 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { Col, Row, Modal, Input } from "antd/es";
+import DataContext from "context/DataContext";
+
+import { Col, Row, Modal, Input, message } from "antd/es";
 
 const PreviewUpdateProfil = () => {
+	const { data, setData } = useContext(DataContext);
+
+	const updateProfile = () => {
+		const tmp = data.profileData;
+		tmp.email = data.email;
+		tmp.firstname = data.firstname;
+		tmp.lastname = data.lastname;
+		tmp.phoneNumber = data.phoneNumber;
+		setData({ ...data, profileData: tmp, editProfilModal: false });
+		message.success("Profile well updated", 3);
+	};
+
 	return (
 		<>
 			<Modal
 				title="Edit your account"
 				okText="Update"
-				visible={state.editProfilModal}
+				visible={data.editProfilModal}
 				onOk={updateProfile}
-				onCancel={() => setState({ editProfilModal: false })}
+				onCancel={() => setData({ ...data, editProfilModal: false })}
 			>
 				<Row type="flex" justify="center" className="input-container">
 					<Col span={20}>
-						<b>EMail</b>
+						<b>Email</b>
 						<Input
 							id="email"
 							type="text"
-							value={state.email}
+							value={data.email}
 							onChange={(e) =>
-								setState({ email: e.target.value })
+								setData({ ...data, email: e.target.value })
 							}
 						/>
 					</Col>
@@ -31,9 +45,9 @@ const PreviewUpdateProfil = () => {
 						<Input
 							id="firstname"
 							type="text"
-							value={state.firstname}
+							value={data.firstname}
 							onChange={(e) =>
-								setState({ firstname: e.target.value })
+								setData({ ...data, firstname: e.target.value })
 							}
 						/>
 					</Col>
@@ -44,9 +58,9 @@ const PreviewUpdateProfil = () => {
 						<Input
 							id="lastname"
 							type="text"
-							value={state.lastname}
+							value={data.lastname}
 							onChange={(e) =>
-								setState({ lastname: e.target.value })
+								setData({ ...data, lastname: e.target.value })
 							}
 						/>
 					</Col>
@@ -57,9 +71,12 @@ const PreviewUpdateProfil = () => {
 						<Input
 							id="email"
 							type="text"
-							value={state.phoneNumber}
+							value={data.phoneNumber}
 							onChange={(e) =>
-								setState({ phoneNumber: e.target.value })
+								setData({
+									...data,
+									phoneNumber: e.target.value,
+								})
 							}
 						/>
 					</Col>

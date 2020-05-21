@@ -1,17 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import DataContext from "context/DataContext";
 
 import MentionsTagsComponent from "components/MentionTagsComponent";
 import { Col, Row, Modal, Input } from "antd/es";
 
 const PreviewUploadPicture = () => {
+	const { data, setData } = useContext(DataContext);
+
+	const uploadPicture = () => {
+		alert(
+			"J'upload une image avec la description : " +
+				data.description +
+				" et les hashtags " +
+				data.hashtags +
+				" et les mentions " +
+				data.mentions
+		);
+	};
+
+	const updateMentions = (value) => {
+		setData({ ...data, mentions: value });
+	};
+
+	const updateHashtags = (value) => {
+		setData({ ...data, hashtags: value });
+	};
+
 	return (
 		<>
 			<Modal
 				title="Upload a picture"
 				okText="Upload"
-				visible={state.uploadModal}
+				visible={data.uploadModal}
 				onOk={uploadPicture}
-				onCancel={() => setState({ uploadModal: false })}
+				onCancel={() => setData({ ...data, uploadModal: false })}
 			>
 				<Row type="flex" justify="center" className="input-container">
 					<Col span={20}>
@@ -20,22 +43,25 @@ const PreviewUploadPicture = () => {
 							id="description"
 							title="Description"
 							type="text"
-							value={state.description}
+							value={data.description}
 							onChange={(e) =>
-								setState({ description: e.target.value })
+								setData({
+									...data,
+									description: e.target.value,
+								})
 							}
 						/>
 					</Col>
 				</Row>
 				<MentionsTagsComponent
 					type="mentions"
-					value={state.mentions}
+					value={data.mentions}
 					title="Mention a user"
 					setValue={updateMentions}
 				/>
 				<MentionsTagsComponent
 					type="tags"
-					value={state.hashtags}
+					value={data.hashtags}
 					title="Hashtags"
 					setValue={updateHashtags}
 				/>

@@ -9,6 +9,7 @@ const Publications = () => {
 
 	const openPreview = (postNumber) => {
 		setData({
+			...data,
 			previewItem: postNumber,
 			previewPublicationModal: true,
 		});
@@ -29,10 +30,10 @@ const Publications = () => {
 							onClick={() => openPreview(0)}
 						>
 							<img
-								src={data.profileData.posts[0].imageUrl}
+								src={`${data.profileData.posts[0].imageUrl}`}
 								width={200}
 								height={200}
-								alt={data.profileData.posts[0].imageUrl}
+								alt={`${data.profileData.posts[0].imageUrl}`}
 							/>
 						</Card>
 						<Card

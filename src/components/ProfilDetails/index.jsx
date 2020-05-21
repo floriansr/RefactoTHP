@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
 import DataContext from "context/DataContext";
+import formatDate from "tools/FormatDate";
 
 import { Avatar, Button, Card, Col, Icon, Row } from "antd/es";
 
@@ -20,9 +21,7 @@ const ProfilDetails = () => {
 											size={100}
 											icon="user"
 											className="profil-pic"
-											src={
-												data.profileData.profilePicture
-											}
+											src={`${data.profileData.profilePicture}`}
 										/>
 										<h3>{`${data.profileData.firstname} ${data.profileData.lastname}`}</h3>
 									</Col>
@@ -48,6 +47,15 @@ const ProfilDetails = () => {
 											/>
 											{data.profileData.phoneNumber}
 										</p>
+										<p>
+											<Icon
+												type="calendar"
+												className="p-icon"
+											/>
+											{formatDate(
+												data.profileData.createdAt
+											)}
+										</p>
 									</Col>
 								</Row>
 							</Col>
@@ -61,7 +69,10 @@ const ProfilDetails = () => {
 									type="ghost"
 									icon="setting"
 									onClick={() =>
-										setData({ editProfilModal: true })
+										setData({
+											...data,
+											editProfilModal: true,
+										})
 									}
 								>
 									Edit account
@@ -72,7 +83,7 @@ const ProfilDetails = () => {
 									type="ghost"
 									icon="upload"
 									onClick={() =>
-										setData({ uploadModal: true })
+										setData({ ...data, uploadModal: true })
 									}
 								>
 									Upload a picture

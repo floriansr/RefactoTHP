@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { Col, Row, Modal, List, Tag } from "antd/es";
+import DataContext from "context/DataContext";
+
+import { Col, Row, Modal, List, Tag, Button } from "antd/es";
 
 const PreviewPublicationModals = () => {
+	const { data, setData } = useContext(DataContext);
+
+	const updatePic = () => {
+		alert(
+			"J'update la publcation avec l'id : " +
+				data.profileData.posts[data.previewItem].id
+		);
+	};
+
+	const deletePic = () => {
+		alert(
+			"Je supprime la publcation avec l'id : " +
+				data.profileData.posts[data.previewItem].id
+		);
+	};
+
 	return (
 		<>
 			<Modal
 				width={520}
-				visible={state.previewPublicationModal}
-				onCancel={() => setState({ previewPublicationModal: false })}
+				visible={data.previewPublicationModal}
+				onCancel={() =>
+					setData({ ...data, previewPublicationModal: false })
+				}
 				footer={
 					<Row type="flex">
 						<Col span={12} className="text-center">
@@ -35,16 +55,16 @@ const PreviewPublicationModals = () => {
 				<Row type="flex" align="middle">
 					<Col xs={24} md={12} className="text-center">
 						<img
-							src={
-								state.profileData.posts[state.previewItem]
+							src={`${
+								data.profileData.posts[data.previewItem]
 									.imageUrl
-							}
+							}`}
 							width={200}
 							height={200}
-							alt={
-								state.profileData.posts[state.previewItem]
+							alt={`${
+								data.profileData.posts[data.previewItem]
 									.description
-							}
+							}`}
 						/>
 					</Col>
 
@@ -53,7 +73,7 @@ const PreviewPublicationModals = () => {
 							<b>Description: </b>
 							<p>
 								{
-									state.profileData.posts[state.previewItem]
+									data.profileData.posts[data.previewItem]
 										.description
 								}
 							</p>
@@ -63,7 +83,7 @@ const PreviewPublicationModals = () => {
 							<List
 								grid={{ gutter: 16, column: 2 }}
 								dataSource={
-									state.profileData.posts[state.previewItem]
+									data.profileData.posts[data.previewItem]
 										.hashtags
 								}
 								renderItem={(tag) => (
@@ -80,7 +100,7 @@ const PreviewPublicationModals = () => {
 							<List
 								grid={{ gutter: 16, column: 2 }}
 								dataSource={
-									state.profileData.posts[state.previewItem]
+									data.profileData.posts[data.previewItem]
 										.mentions
 								}
 								renderItem={(user) => (
@@ -93,7 +113,6 @@ const PreviewPublicationModals = () => {
 					</Col>
 				</Row>
 			</Modal>
-			;
 		</>
 	);
 };
