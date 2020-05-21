@@ -2,15 +2,21 @@
 
 import React, { useState } from "react";
 
+import PreviewPublicationModals from "components/PreviewPublicationModals";
+import PreviewUploadPicture from "components/PreviewUploadPicture";
+import PreviewUpdateProfil from "components/PreviewUpdateProfil";
+import ProfilDetails from "components/ProfilDetails";
+import Publications from "components/Publications";
+
 // import { updateProfile } from "tools/updateProfile";
 // import { updatePic } from "tools/updatePic";
 // import { deletePic } from "tools/deletePic";
 
 // import { uploadPicture } from "tools/uploadPicture";
 // import { uploadModal } from "tools/uploadModal";
+// import { openPreview } from "tools/OpenPreview";
 // import { formatDate } from "tools/FormatDate";
 
-// import MentionsTagsComponent from "components/MentionTagsComponent";
 // import { updateMentions } from "tools/updateMentions";
 // import { updateHashtags } from "tools/updateHashtags";
 
@@ -65,25 +71,29 @@ const App = () => {
       ],
     },
   });
-  // this.formatDate = this.formatDate.bind(this);
-  // this.deletePic = this.deletePic.bind(this);
-  // this.updatePic = this.updatePic.bind(this);
-  // this.uploadPicture = this.uploadPicture.bind(this);
-  // this.updateHashtags = this.updateHashtags.bind(this);
-  // this.updateMentions = this.updateMentions.bind(this);
-  // this.updateProfile = this.updateProfile.bind(this);
 
-  const openPreview = (postNumber) => {
-    setData({
-      previewItem: postNumber,
-      previewPublicationModal: true,
-    });
-  };
-
-  return <></>;
+  return (
+    <>
+      <div style={{ margin: 50 }}>
+        <PreviewPublicationModals />
+        <PreviewUploadPicture />
+        <PreviewUpdateProfil />
+        <ProfilDetails />
+        <Publications />
+      </div>
+    </>
+  );
 };
 
 export default App;
+
+// this.formatDate = this.formatDate.bind(this);
+// this.deletePic = this.deletePic.bind(this);
+// this.updatePic = this.updatePic.bind(this);
+// this.uploadPicture = this.uploadPicture.bind(this);
+// this.updateHashtags = this.updateHashtags.bind(this);
+// this.updateMentions = this.updateMentions.bind(this);
+// this.updateProfile = this.updateProfile.bind(this);
 
 // <p>
 //   <Icon type="calendar" className="p-icon" />
